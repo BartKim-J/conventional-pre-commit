@@ -1,4 +1,4 @@
-# Warning: 기존 conventional-pre-commit 에 한글 인식이 안되는 부분을 수정하 버전 입니다.
+## Warning: 기존 conventional-pre-commit 에 한글 인식이 안되는 부분을 수정한 버전 입니다.
 
 # conventional-pre-commit
 
