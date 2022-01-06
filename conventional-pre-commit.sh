@@ -21,11 +21,11 @@ msg_file="$1"
 # join types with | to form regex ORs
 r_types="($(IFS='|'; echo "${types[*]}"))"
 # optional (scope)
-r_scope="(\([[:alnum:] \/-]+\))?"
+r_scope="(\([[가-힣a-zA-Z0-9] \/-]+\))?"
 # optional breaking change indicator and colon delimiter
 r_delim='!?:'
 # subject line, body, footer
-r_subject=" [[:alnum:]|[가-힣]].+"
+r_subject=" ([가-힣a-zA-Z0-9].+)"
 # the full regex pattern
 pattern="^$r_types$r_scope$r_delim$r_subject$"
 
@@ -38,22 +38,14 @@ echo "[Commit message] $( cat "$msg_file" )"
 echo "
 Your commit message does not follow Conventional Commits formatting
 https://www.conventionalcommits.org/
-
 Conventional Commits start with one of the below types, followed by a colon,
 followed by the commit message:
-
     $(IFS=' '; echo "${types[*]}")
-
 Example commit message adding a feature:
-
     feat: implement new API
-
 Example commit message fixing an issue:
-
     fix: remove infinite loop
-
 Optionally, include a scope in parentheses after the type for more context:
-
     fix(account): remove infinite loop
 "
 exit 1
