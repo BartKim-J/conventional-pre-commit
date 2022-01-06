@@ -25,12 +25,12 @@ r_scope="(\([[:alnum:] \/-]+\))?"
 # optional breaking change indicator and colon delimiter
 r_delim='!?:'
 # subject line, body, footer
-r_subject=" [[:alnum:|가-힣]].+"
+r_subject=" [[:alnum:]|[가-힣]].+"
 # the full regex pattern
 pattern="^$r_types$r_scope$r_delim$r_subject$"
 
 # Check if commit is conventional commit
-if grep -Pq "$pattern" "$msg_file"; then
+if grep -Eq "$pattern" "$msg_file"; then
     exit 0
 fi
 
