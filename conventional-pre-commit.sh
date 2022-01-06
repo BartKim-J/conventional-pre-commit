@@ -30,7 +30,7 @@ r_subject=" [[:alnum:|가-힣]].+"
 pattern="^$r_types$r_scope$r_delim$r_subject$"
 
 # Check if commit is conventional commit
-if grep -Eq "$pattern" "$msg_file"; then
+if grep -Pq "$pattern" "$msg_file"; then
     exit 0
 fi
 
